@@ -1,5 +1,9 @@
-<div id="wrapper">
+<div id="wrapper"><form>
   <h1>Polling System</h1>
-  <input class="form-control" placeholder="Enter Your Name" type="">
- <div  id="button-wrapper"> <button class="btn btn-primary">Enter</button></div>
+  <input #txtName name="txtName" class="form-control" placeholder="Enter Your Name" type="text" [(ngModel)]="name">
+ <div  id="button-wrapper"> <button class="btn btn-primary" (click)="enter()">🔐 Enter</button></div>
+
+<div id="invalid" *ngIf="valid">Access denied:invalid Name</div>
+</form>
 </div>
+
