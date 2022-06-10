@@ -9,7 +9,7 @@ import {UserService} from "../service/user.service";
   styleUrls: ['./dash-board.component.scss']
 })
 export class DashBoardComponent implements OnInit {
-
+static number= 1;
 polls: Array<Poll> =[];
   constructor(private userService:UserService, private routerService: Router) {
 
@@ -21,6 +21,12 @@ polls: Array<Poll> =[];
     }
   }
 createPoll(title:string){
-    this.polls.push(new Poll(Math.random(), title,this.userService.getPrincipal()!));
+    this.polls.push(new Poll(DashBoardComponent.number++, title,this.userService.getPrincipal()!));
 }
+
+  navigate(id: number) {
+    this.routerService.navigateByUrl('polls/${id}')
+    // this.routerService.navigate(['polls',id])
+  }
+
 }
